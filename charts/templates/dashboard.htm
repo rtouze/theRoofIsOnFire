@@ -1,0 +1,26 @@
+{% extends "roofIsOnFireBase.htm" %}
+{% load i18n %}
+{% block page_content %}
+<div id="project_title"><h1>{% trans "User dashboard" %}</h1></div>
+<div id="centered_page_content">
+  <h2>{% trans "Welcome" %} {{user.username}}</h2>
+  {% if user_projects %}
+  <p>{% trans "Choose one of your projetcs:" %}</p>
+  <ul>
+    {% for project in user_projects %}
+    <li>
+    <a class="project_link" href="/charts/project/{{user.pk}}/{{project.pk}}">{{project.name}}</a> 
+    <span class="project_options">
+      | <a  href="/charts/project/edit/{{user.pk}}/{{project.pk}}">{% trans "Edit" %}</a>
+      | <a  href="/charts/project/remove/{{user.pk}}/{{project.pk}}">{% trans "Delete" %}</a>
+    </span>
+    </li>
+    {% endfor %}
+  </ul>
+  <p>{% trans "or" %} <a href="/charts/project/new/{{user.pk}}">{% trans "create a new project" %}</a>.</p>
+  {% else %}
+  <p> {% trans "No project yet?" %}</p>
+  <p><a href="/charts/project/new/{{user.pk}}">{% trans "Create a project" %}</a></p>
+  {% endif %}
+</div>
+{% endblock %}

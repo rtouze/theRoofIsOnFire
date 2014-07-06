@@ -1,0 +1,13 @@
+# Vim swap
+.*.swp
+
+*.pyc
+*.db
+TODO.txt
+*.bz2
+
+# Gettext stuff
+*.mo
+tags
+
+README.htm

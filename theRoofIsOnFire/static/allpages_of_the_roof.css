@@ -1,0 +1,342 @@
+/*******************************************************************************
+ * Main stylesheet for TheRoofIsOnFire
+ * Copyright (c) 2013 Romain TOUZÉ
+ ******************************************************************************/
+@charset "utf-8";
+
+html {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+  font-family: sans-serif;
+  font-size: 1em;
+  background-color: #539cff;
+  margin: 0;
+  height: 100%;
+}
+
+
+#whole_page_container {
+    width: 50%;
+    min-height: 100%;
+    margin: auto;
+    font-size: 1em;
+    background: #ddd;
+}
+
+#page_body_container {
+    background: white;
+    padding-bottom: 200px;
+    padding-right: 20px;
+    padding-left: 20px;
+    min-height: 60em;
+}
+
+/* Footer */
+#footer {
+    padding-top: 10px;
+    border-top: solid black 5px;
+    margin: auto;
+    text-align: center;
+    height: 200px;
+}
+
+#footer a {
+    color: black;
+    font-size: 1em;
+    width: 20%;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+a {
+  color: #539cff;
+}
+
+a.project_link {
+  font-weight: bold;
+}
+
+/* page titles */
+
+h1 {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+}
+
+/* signin */
+
+div#signin_form_placeholder {
+    width: 90%;
+    margin: auto;
+}
+
+/* project create form */
+div#create_project_form_placeholder {
+    width: 50%;
+    margin: auto;
+}
+
+div#create_project_form_placeholder div.form_button {
+    float: right;
+    margin: 10px;
+}
+
+div.form_button {
+    background-color: #ddd;
+    font-size: 1em;
+    cursor: pointer;
+    border: none;
+    padding: 10px;
+    text-align: center;
+    float: right;
+}
+
+#signin_form div.form_button {
+    float: right;
+    margin: 10px;
+}
+
+div.form_button:hover {
+    background-color: #539cff;
+    color: white;
+}
+
+table.form {
+    width: 100%;
+}
+
+table.form th, table.form td 
+{
+    width:50%;
+}
+
+table.form th {
+    text-align: right;
+    font-size: 1em;
+    font-weight: normal;
+}
+
+table.form input[type=text],
+table.form input[type=password],
+table.form input[type=email]
+{
+    font-size: 1em;
+}
+
+table.form td {
+    text-align: left;
+}
+
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+/* project task page */
+
+div#task_form_place_holder {
+    width: 80%;
+    margin: auto;
+}
+
+table.task_form {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1em;
+}
+
+table.task_form th,
+table.task_form td
+{
+    border: solid black 1px;
+    padding: .2em;
+}
+
+table.task_form th {
+    background-color: #ddd;
+    padding: .5em;
+}
+
+table.task_form th.task_header {
+    width: 60%;
+}
+
+table.task_form th.enddate_header {
+    width: 20%;
+}
+
+table.task_form th.score_header {
+    width: 10%;
+}
+
+table.task_form td.score {
+  text-align: center;
+}
+
+input.date_input {
+    border: none;
+    font-size: 1em;
+}
+
+table.task_form .no_border {
+  border-style: none;
+  background: none;
+}
+
+div.minus_button {
+    width: 1em;
+    margin-left: 0.3em;
+    height: 1em;
+}
+
+div.minus_button:before {
+    content: "‐";
+}
+
+#plus_btn, #sync_btn {
+  float: left;
+  margin-right: 0.3em;
+  margin-top: 0.5em;
+}
+
+#plus_btn {
+  width: 1em;
+  height: 1em;
+}
+
+#plus_btn:before {
+  content: "+"
+}
+
+#sync_btn {
+  width: 3em;
+  height: 1em;
+}
+
+#sync_btn:before {
+    content: "Sync";
+}
+
+div#task_button_container {
+    width: 100%;
+}
+
+div.clear-sep {
+  clear: both;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+#total_score {
+    color: #666;
+    font-size: 1.2em;
+    margin-top: 1em;
+    margin-bottom: x;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+}
+
+#burndown_chart {
+  padding-top: 50px;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2em;
+}
+
+.hidden_cell {
+  display: none;
+}
+
+.ajax-messages {
+  display: none;
+  float: right;
+  color: white;
+  font-weight: bold;
+  font-size: 0.8em;
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+  padding: 5px;
+  position: relative;
+  /*margin: auto;*/
+}
+
+#sync-ok {
+  background: green;
+}
+#sync-ko {
+  background: red;
+}
+
+#project_title {
+  text-align: center;
+  font-style: italic;
+  color: #aaa;
+  padding: 10px;
+}
+
+a.backlink {
+    display: block;
+    margin: auto;
+    text-align: center;
+}
+
+a.backlink:hover {
+    color:#666;
+}
+
+
+#mouse_bar_score {
+    position: absolute;
+    display: none;
+    background: white;
+    color: red;
+    border-width: 2px;
+    border-color: red;
+    border-style:solid;
+    font-weight: bold;
+    font-size: 0.8em;
+    padding: 0.5em;
+}
+
+#project_id {
+  display: none;
+}
+
+#centered_page_content {
+  margin-left: auto;
+  margin-right: auto;
+  width: 600px;
+}
+
+
+/*********************
+ * SVG Styles
+ ********************/
+
+rect.bdBar {
+  fill:#4cc9db;
+  //stroke-width:1;
+  //stroke:rgb(0,0,0);
+}
+
+line#graph_x_axis, line#graph_ideal_line {
+  stroke:#32405e;
+  stroke-width:2;
+}
+
+

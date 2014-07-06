@@ -1,0 +1,75 @@
+{% extends "roofIsOnFireBase.htm" %}
+{% load i18n %}
+{% block additional_stylesheets %}
+<link rel="stylesheet" href="/static/house_entry.css" type="text/css" />
+{% endblock %}
+{% block additional_scripts %}
+<script type="text/javascript" src="/static/index.js"></script>
+{% endblock %}
+{% block page_content %}
+
+<div id="title_container">
+  <div id="site_title">
+    <img src="/static/images/the_roof_logox300.png" alt="TheRoofIsOnFire" width="300" height="212" />
+  </div>
+  <div id="sub_title">
+    {# L'application qui vous aide a terminer vos projets grâce au <a href="#">burn down chart</a>, outil issu des methodes agiles de </div>développement logiciel.  #}
+  {% blocktrans %}
+  The application that helps you to get your projects done by the use of
+  {% endblocktrans %}
+    <a href="#">burn down chart</a>
+  {% blocktrans  %}
+  , a tool used by software engineering agile
+  methodologies.
+  {% endblocktrans %}
+  </div>
+</div>
+
+
+<div id="index_buton_container">
+  <a href="{% url 'signin' %}">
+    <div class="account_button">
+      {#  C'est prometteur : je crée un compte en 2 minutes #}
+      {% blocktrans  %}
+      It looks promising: I create an account within 2 minutes
+      {% endblocktrans %}
+    </div>
+  </a>
+
+  <div class="agation">
+    {# Connecte moi :  #}
+    {% trans "Connect me:" %}
+    <a href="#" id="please_log_me_in">
+      {# j'ai déjà un compte #}
+      {% blocktrans  %}
+      I already have an account
+      {% endblocktrans %}
+    </a>
+  </div>
+</div>
+
+{% if message %}
+<div id="error_placeholder">{{ message }}</div>
+<div id="login_frame" style="display: inherit">
+{% else %}
+<div id="login_frame">
+{% endif %}
+
+
+<p>
+{% blocktrans  %}
+Please enter your user name and password to access your account.
+{% endblocktrans %}
+</p>
+  <form action="{% url 'login' %}" method="post" id="login_form">
+  {% csrf_token %}
+  <table class="form">
+    {{ form.as_table }}
+  </table>
+  <div id="login_submit_frame">
+      {# <input type="submit" value="{% trans "Submit" %}" class="bordered" /> #}
+    <div id="login_submit_button" class="form_button">{% trans "Submit" %}</div>
+  </div>
+</form>
+</div>
+{% endblock %}

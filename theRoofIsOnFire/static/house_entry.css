@@ -1,0 +1,76 @@
+/*******************************************************************************
+ * Index page stylesheet for TheRoofIsOnFire
+ * Copyright (c) 2013 Romain TOUZÉ
+ ******************************************************************************/
+
+/* Stylesheet dedicated to the index page. */
+
+#title_container {
+    text-align: center;
+    margin: auto;
+}
+
+#site_title {
+    font-style: italic;
+    font-size: 30pt;
+    color: #365783;
+}
+
+#sub_title {
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    line-height: 1.2em;
+    width: 50%;
+    text-align: center;
+}
+
+div.account_button {
+    background-color: #ddd;
+    padding: 20px;
+    width: 50%;
+    text-align: center;
+    font-size: 1.5em;
+    margin: auto;
+}
+
+div.account_button:hover {
+    background-color: #539cff;
+    color: white;
+}
+
+div.agation {
+    margin: auto;
+    clear: both;
+    text-align: center;
+    padding-top: 20px;
+}
+
+/* Login styles start */
+#login_frame {
+  display: none;
+  font-size: 1em;
+  text-align: center;
+  width: 50%;
+  margin: auto;
+}
+
+#login_submit_frame {
+  margin-top:  20px;
+}
+
+#index_buton_container {
+  width: 100%;
+  margin: auto;
+}
+
+div#error_placeholder {
+    margin: auto;
+    width: 50%;
+    color:  #ff7070;
+    text-align: center;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    font-size: 1.5em;
+
+}

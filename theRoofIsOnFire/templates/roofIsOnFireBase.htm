@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<!-- Copyright (c) 2013 Romain TOUZÉ -->
+<html>
+  <head>
+    <title>The roof is on fire!</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/static/allpages_of_the_roof.css" type="text/css" />
+    <link rel="stylesheet" href="/static/jquery-ui-1.10.4/themes/base/jquery-ui.css" type="text/css" />
+    {% block additional_stylesheets %}
+    {% endblock %}
+    <script type="text/javascript" src="/static/jquery-2.1.0.min.js"></script>
+    {% block additional_scripts %}
+    {% endblock %}
+  </head>
+  <body>
+    <div id="whole_page_container">
+      <div id="page_body_container">
+        {% block page_content %}
+        {% endblock %}
+      </div>
+      <div id="footer">
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+        <a href="#">Feedback</a>
+        <a href="#">Legal mentions</a> 
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,72 @@
+{% extends "roofIsOnFireBase.htm" %}
+{% load i18n %}
+{% block additional_scripts %}
+<script type="text/javascript" src="/static/jquery-ui-1.10.4/ui/jquery-ui.min.js"></script>
+<script type="text/javascript" src="/static/tasklist.js"></script>
+{% endblock %}
+{% block page_content %}
+
+<div class="ajax-messages" id="sync-ok">Synchronized !</div>
+<div class="ajax-messages" id="sync-ko">Error in synchronize</div>
+<div id="project_title"><h1>Projet "{{project.name}}"</h1></div>
+<div id="task_form_place_holder">
+<table id="chart_dates">
+  <tr>
+    <td>Begin date:</td>
+    <td id="begin_date">{{project.start_date|date:'m/d/Y'}}</td>
+  </tr>
+  <tr>
+    <td>End date:</td>
+    <td id="end_date">{{project.end_date|date:'m/d/Y'}}</td>
+  </tr>
+</table>
+<div id="project_id">{{project.pk}}</div>
+<div id="total_score"></div>
+<table id="task_table" class="task_form">
+  {% csrf_token %}
+  <tr>
+    <th name="id_cell" class="hidden_cell"></th>
+    <th class="task_header">Task</th>
+    <th class="score_header">Score</th>
+    <th class="enddate_header">End date</th>
+    <th class="no_border"></th>
+  </tr>
+  {% for task in tasks %}
+  <tr>
+    <td name="id_cell" class="hidden_cell">{{task.pk}}</td>
+    <td contenteditable="true" name="task_name">{{task.task_name}}</td>
+    <td contenteditable="true" name="score_cell" class="score">{{task.points}}</td>
+    <td name="date_cell">
+      {% if task.end_date %}
+      <input title="Format mm/jj/aaaa" class="date_input" type="text" value="{{task.end_date|date:'m/d/Y'}}" />
+      {% else %} 
+      <input title="Format mm/jj/aaaa" class="date_input" type="text" />
+      {%  endif %}
+    </td>
+    <td class="no_border">
+      <div class="form_button bold minus_button" name="erase_button" title="Remove task."></div>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+
+<div class="task_button_container">
+  <div class="form_button bold" id="plus_btn"></div>
+  <div class="form_button bold" id="sync_btn"></div>
+</div>
+<div class="clear-sep"></div>
+</div>
+
+<div id="burndown_chart">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    version="1.1"
+    id="svg_bd_graph"
+    width="100%"
+    height="100%">
+  </svg>
+</div>
+<a class="backlink" href="/charts/dashboard/{{user_id}}">Back to dashboard</a>
+<!-- Hidden score div to be shown when mousovering the bars -->
+<div id="mouse_bar_score"></div>
+{% endblock %}

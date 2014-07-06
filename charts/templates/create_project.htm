@@ -1,0 +1,20 @@
+{% extends "roofIsOnFireBase.htm" %}
+{% load i18n %}
+{% block additional_scripts %}
+<script type="text/javascript" src="/static/jquery-ui-1.10.4/ui/jquery-ui.min.js"></script>
+<script type="text/javascript" src="/static/create_project.js"></script>
+{% endblock %}
+{% block page_content %}
+<div id="project_title"><h1>{% trans "Project creation" %}</h1></div>
+<div id="create_project_form_placeholder">
+  <form id="creation_form" method="post" action="{{action_url}}"> {% csrf_token %}
+    <table class="form">
+      {{ form.as_table }}
+    </table>
+    <a href="#"><div id="submit_link" class="form_button">{% trans "Create" %}</div></a>
+    <a href="/charts/dashboard/{{user.id}}">
+        <div id="back_link" class="form_button">{% trans "Back to dashboard" %}</div>
+    </a>
+  </form>
+</div>
+{% endblock %}
