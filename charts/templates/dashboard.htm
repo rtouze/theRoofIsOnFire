@@ -22,5 +22,6 @@
   <p> {% trans "No project yet?" %}</p>
   <p><a href="/charts/project/new/{{user.pk}}">{% trans "Create a project" %}</a></p>
   {% endif %}
+  <p> {% trans "You can also" %} <a href="/charts/user/edit/{{user.pk}}">{% trans "edit your profile" %}</a>.</p>
 </div>
 {% endblock %}

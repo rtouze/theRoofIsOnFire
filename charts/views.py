@@ -111,7 +111,6 @@ def edit_project(request, user_id, project_id):
 
 @login_required(login_url='/login/invalid/unknown')
 def remove_project(request, user_id, project_id):
-    # TODO We need authentication here!
     # TODO Post a message to tel the project is deleted
     # TODO Put the project in a recycle bin rather than destroying it
     p = ChartProject.objects.get(pk=project_id)
@@ -139,6 +138,25 @@ def update_project_tasks(request, project_id):
             t.save()
     return HttpResponse()
 
+@login_required(login_url='/login/invalid/unknown')
+def edit_user(request, user_id):
+    user = User.objects.get(pk=user_id)
+    if  request.method == 'POST':
+        form = UserModificationForm(request.POST)
+        if form.is_valid():
+            user.first_name = form.cleaned_data['first_name']
+            user.last_name = form.cleaned_data['last_name']
+            user.save()
+            return HttpResponseRedirect('/charts/dashboard/{0}'.format(user_id))
+
+    data = {
+        'first_name': user.first_name,
+        'last_name': user.last_name
+    }
+    form = UserModificationForm(data)
+    context = {'form': form, 'user': user}
+    return render(request, 'edit_user.htm', context)
+
 class ProjectForm(forms.Form):
     name = forms.CharField(label=_('Project name'), max_length=256)
     date_formats = ['%m/%d/%Y', "%Y-%m-%d"]
@@ -159,11 +177,11 @@ class UserForm(forms.Form):
     Form displayed on signin page to allow a user to create an account.
     """
     username = forms.CharField(label=_('Username:'), max_length=256)
-    first_name = forms.CharField(label=_('Lastname:'),
+    first_name = forms.CharField(label=_('Firstname:'),
                                  max_length=256,
                                  required=False)
 
-    last_name = forms.CharField(label=_('Firstname:'),
+    last_name = forms.CharField(label=_('Lastname:'),
                                 max_length=256,
                                 required=False)
 
@@ -189,7 +207,13 @@ class UserForm(forms.Form):
 
     # TODO : presence / absence validation test ?
     #phone = forms.CharField(label=u'Téléphone :', max_length=256)
-    
-    
 
+class UserModificationForm(forms.Form):
+    '''Form for user modification page. Present limited field for modification'''
+    first_name = forms.CharField(label=_('Firstname:'),
+                                 max_length=256,
+                                 required=False)
 
+    last_name = forms.CharField(label=_('Lastname:'),
+                                max_length=256,
+                                required=False)

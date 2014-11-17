@@ -23,5 +23,9 @@ urlpatterns = patterns('',
     url(r'^update_tasks/(?P<project_id>\d+)',
        views.update_project_tasks,
        name='update_project_tasks'),
+
+    url(r'^user/edit/(?P<user_id>\d+)',
+       views.edit_user,
+       name='edit_user')
 )
 

@@ -82,12 +82,7 @@ div#create_project_form_placeholder {
     margin: auto;
 }
 
-div#create_project_form_placeholder div.form_button {
-    float: right;
-    margin: 10px;
-}
-
-div.form_button {
+.form_button {
     background-color: #ddd;
     font-size: 1em;
     cursor: pointer;
@@ -95,17 +90,14 @@ div.form_button {
     padding: 10px;
     text-align: center;
     float: right;
-}
-
-#signin_form div.form_button {
-    float: right;
     margin: 10px;
 }
 
-div.form_button:hover {
+.form_button:hover {
     background-color: #539cff;
     color: white;
 }
+
 
 table.form {
     width: 100%;

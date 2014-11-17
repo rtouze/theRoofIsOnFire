@@ -1,0 +1,16 @@
+{% extends "roofIsOnFireBase.htm" %}
+{% load i18n %}
+{% block page_content %}
+<h1>{% trans "Edit user" %} {{ user.username }}</h1>
+    <form method="post" action="/charts/user/edit/{{ user.pk }}">
+      {% csrf_token %}
+      <table class="form">
+      {{ form.as_table }}
+      </table>
+    <input class="form_button" type="submit" />
+    <a href="/charts/dashboard/{{ user.pk }}">
+    <button class="form_button">{% trans "Back to dashboard" %}</button>
+    </a>
+    </form>
+{% endblock %}
+

@@ -1,8 +1,5 @@
 """
-This file demonstrates writing tests using the unittest module. These will pass
-when you run "manage.py test".
-
-Replace this with more appropriate tests for your application.
+Django test file for the charts app.
 """
 
 from datetime import date, timedelta
@@ -38,7 +35,6 @@ class UserTest(TestCase):
     def tearDown(self):
         self.user.delete()
 # }}}
-
 
 # {{{ UserFormCreationTest
 class UserFormCreationTest(TestCase):
@@ -83,7 +79,6 @@ class UserFormCreationTest(TestCase):
         self.assertTrue(form.is_valid())
 # }}}
 
-
 # {{{ SignInValidationRequest
 
 class SignInValidationRequest(TestCase):
@@ -105,6 +100,29 @@ class SignInValidationRequest(TestCase):
         self.assertEqual('bar', actualUser.last_name)
 # }}}
 
+# {{{ UserModificationTest
+class UserModificationTest(TestCase):
+    """Blah Blah Blah"""
+
+    def setUp(self):
+        self.user = create_user1()
+
+    def test_user_modification(self):
+        data = {
+            'first_name': 'John',
+            'last_name': 'Doe'
+        }
+        client = Client()
+        client.login(username='testUser', password='passwd')
+        client.post('/charts/user/edit/{0}'.format(self.user.pk), data)
+        new_user = User.objects.get(pk=self.user.pk)
+        self.assertEqual('John', new_user.first_name)
+        self.assertEqual('Doe', new_user.last_name)
+
+    def tearDown(self):
+        self.user.delete()
+
+# }}}
 
 # {{{ AccessToDashboard
 class AccessToDashboard(TestCase):
@@ -192,7 +210,6 @@ class SigninRoute(TestCase):
         response = client.get('/charts/signin')
         self.assertEqual(200, response.status_code)
 # }}}
-
 
 # {{{ Project cases
 class ProjectDataSet(object):
@@ -404,6 +421,7 @@ class ProjectTaskEdition(ProjectBaseTestCase):
 
 #  }}} Project cases
         
+# {{{ Test user creation
 def create_user1():
     """ Creates a valid user in the database. It's name will be testUser. """
     try:
@@ -431,3 +449,6 @@ def create_user2():
                 email='foo.bar2@example.com',
                 password='passwd'
                 )
+# }}}
+
+# vim: foldmethod=marker:
