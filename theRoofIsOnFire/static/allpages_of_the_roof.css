@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Main stylesheet for TheRoofIsOnFire
- * Copyright (c) 2013 Romain TOUZÉ
+ * Copyright (c) 2015 Romain TOUZÉ
  ******************************************************************************/
 @charset "utf-8";
 
@@ -13,17 +13,17 @@ body {
   font-family: sans-serif;
   font-size: 1em;
   background-color: #539cff;
+  color: #666;
   margin: 0;
   height: 100%;
 }
-
 
 #whole_page_container {
     width: 75%;
     min-height: 100%;
     margin: auto;
     font-size: 1em;
-    background: #ddd;
+    background: white;
 }
 
 #page_body_container {
@@ -178,6 +178,10 @@ table.task_form td.score {
 input.date_input {
     border: none;
     font-size: 1em;
+    color: #666;
+    margin: auto;
+    text-align: center;
+    width: 100%;
 }
 
 table.task_form .no_border {
@@ -235,7 +239,7 @@ div.clear-sep {
     color: #666;
     font-size: 1.2em;
     margin-top: 1em;
-    margin-bottom: x;
+    margin-bottom: 2em;
     font-weight: bold;
     text-align: center;
     width: 100%;
@@ -264,7 +268,6 @@ div.clear-sep {
   border-width: 1px;
   padding: 5px;
   position: relative;
-  /*margin: auto;*/
 }
 
 #sync-ok {
@@ -291,7 +294,6 @@ a.backlink:hover {
     color:#666;
 }
 
-
 #mouse_bar_score {
     position: absolute;
     display: none;
@@ -315,15 +317,12 @@ a.backlink:hover {
   width: 600px;
 }
 
-
 /*********************
  * SVG Styles
  ********************/
 
 rect.bdBar {
   fill:#4cc9db;
-  //stroke-width:1;
-  //stroke:rgb(0,0,0);
 }
 
 line#graph_x_axis, line#graph_ideal_line {
